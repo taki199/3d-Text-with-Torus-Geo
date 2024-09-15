@@ -15,7 +15,7 @@ const canvas = document.querySelector('canvas.webgl');
 
 // Scene
 const scene = new THREE.Scene();
-
+scene.background = new THREE.Color(0xffffff);
 /**
  * Textures
  */
@@ -29,7 +29,7 @@ const donutMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture });
 /**
  * GUI for Matcap Texture
  */
-const matcaps = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+const matcaps = [ 1, 2, 3, 4, 5, 6, 7, 8];
 const matcapControl = { matcap: 7 }; // Default to matcap 7
 
 gui.add(matcapControl, 'matcap', matcaps).name('Matcap').onChange((value) => {
@@ -49,7 +49,7 @@ gui.add(matcapControl, 'matcap', matcaps).name('Matcap').onChange((value) => {
 const fontLoader = new FontLoader(); // Use THREE.FontLoader from the core library
 
 fontLoader.load('/fonts/helvetiker_regular.typeface.json', (font) => {
-    const textGeometry = new TextGeometry('Houcine Taki 3D', {
+    const textGeometry = new TextGeometry('Houcine Taki', {
         font: font,
         size: 0.5,
         height: 0.2,
@@ -113,7 +113,7 @@ window.addEventListener('resize', () => {
  * Camera
  */
 // Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(100, sizes.width / sizes.height, 0.1, 100);
 camera.position.x = 1;
 camera.position.y = 1;
 camera.position.z = 2;
